@@ -15,7 +15,6 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-
 // connect to mongo db
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/myFirstDatabase",
     {
@@ -37,6 +36,17 @@ app.get("/stats", function (req, res) {
 
 app.get("/exercise", function (req, res) {
     res.sendFile(path.join(__dirname + '/public/views/exercise.html'));
+});
+
+// save workout to db
+app.put("/api/workouts/:id", function ({body}, res) {
+    db.Workout.create(body)
+        .then(dbWorkout => {
+            console.log(dbWorkout);
+        })
+        .catch(({ message }) => {
+            console.log(message);
+        });
 });
 
 // listen on port 3000
