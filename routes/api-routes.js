@@ -30,7 +30,19 @@ router.post('/api/workouts', function({ body }, res) {
 	db.Workout
 		.create(body)
 		.then((dbWorkout) => {
-			console.log(dbWorkout);
+			res.json(dbWorkout);
+		})
+		.catch(({ message }) => {
+			console.log(message);
+		});
+});
+
+//get cumulated workouts
+router.get('/api/workouts/range', function(req, res) {
+	db.Workout
+		.find({})
+		.then((dbWorkout) => {
+			res.json(dbWorkout);
 		})
 		.catch(({ message }) => {
 			console.log(message);
