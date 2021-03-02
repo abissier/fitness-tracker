@@ -7,11 +7,26 @@ const ExerciseSchema = new Schema({
 		{
 			type: { type: String },
 			name: { type: String },
-			duration: { type: Number },
-			weight: { type: Number },
-			rep: { type: Number },
-			set: { type: Number },
-			distance: { type: Number }
+			duration: {
+				type: Number,
+				default: 0
+			},
+			weight: {
+				type: Number,
+				default: 0
+			},
+			reps: {
+				type: Number,
+				default: 0
+			},
+			sets: {
+				type: Number,
+				default: 0
+			},
+			distance: {
+				type: Number,
+				default: 0
+			}
 		}
 	],
 	totalDuration: {
